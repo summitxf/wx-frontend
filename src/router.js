@@ -10,36 +10,22 @@ export default function (router) {
         require(['./views/Welcome'], resolve)
       }
     },
-    '/home': {
+    '/home/:nickname': {
+      name: 'home',
       component(resolve) {
         require(['./views/Home'], resolve)
       }
     },
-    // '/list': {
-    //   component (resolve) {
-    //     require(['./views/list'], resolve)
-    //   }
-    // },
-    // '/rank': {
-    //   component (resolve) {
-    //     require(['./views/rank'], resolve)
-    //   }
-    // },
-    // '/invite': {
-    //   component (resolve) {
-    //     require(['./views/invite'], resolve)
-    //   }
-    // },
-    // '/tasks': {
-    //   component (resolve) {
-    //     require(['./views/tasks'], resolve)
-    //   }
-    // },
-    // '/user': {
-    //   component (resolve) {
-    //     require(['./views/user'], resolve)
-    //   }
-    // },
+    '/list': {
+      component(resolve) {
+        require(['./views/List'], resolve)
+      }
+    },
+    '/user': {
+      component(resolve) {
+        require(['./views/User'], resolve)
+      }
+    },
     // '/user/tasks': {
     //   component (resolve) {
     //     require(['./views/user/tasks'], resolve)

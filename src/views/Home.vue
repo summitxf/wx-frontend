@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <img class="logo" src="../assets/logo.png">
+    <h1>{{$route.params.nickname}}</h1>
     <hello></hello>
   </div>
 </template>

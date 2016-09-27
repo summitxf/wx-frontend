@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <h1>{{$route.params.nickname}}</h1>
     <h1>{{ msg }}</h1>
   </div>
 </template>
@@ -8,7 +9,7 @@
 module.exports = {
   data: function () {
     return {
-      msg: 'Hello '  + '!'
+      msg: 'Hello world!'
     }
   },
   ready: function () {
@@ -16,11 +17,9 @@ module.exports = {
   },
   methods: {
     getUserinfo: function () {
-      var code = this.$route.query.code || '';
-
-      this.$http.get('/wx/oauth2/getUserInfo', { params: {code} }).then((response) => {
-        this.msg = response.body.nickname || 'Hello world!'
-      })
+      if(sessionStorage.getItem("nickname")){
+        this.msg = "Hello " + sessionStorage.getItem("nickname") + "!"
+      }
     }
   }
 }

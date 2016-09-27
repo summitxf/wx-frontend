@@ -12,11 +12,24 @@
 </template>
 
 <script>
+var url = require('url');
+
 export default {
   ready () {
-    setTimeout(() => {
-      this.$route.router.go({path: '/home', replace: true})
-    }, 1500)
+      var code = url.parse(window.location.href, true).query.code || '';
+      this.$http.get('/wx/oauth2/getUserInfo', { params: {code} }).then((response) => {
+        // success callback
+        console.log("succ")
+        console.log(response)
+        if(response.body.nickname){
+          sessionStorage.setItem("nickname", response.body.nickname);
+        }
+        this.$route.router.go({name: 'home', params: { nickname: response.body.nickname }, replace: true})
+      }, (response) => {
+        // error callback
+        console.log("err")
+        console.log(response)
+      })
   }
 }
 </script>

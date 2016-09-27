@@ -1,64 +1,60 @@
 <template>
-  <div id="app">
-    <img class="logo" src="./assets/logo.png">
-    <hello></hello>
-    <p>
-      Welcome to your Vue.js app!
-    </p>
-    <p>
-      To get a better understanding of how this boilerplate works, check out
-      <a href="http://vuejs-templates.github.io/webpack" target="_blank">its documentation</a>.
-      It is also recommended to go through the docs for
-      <a href="http://webpack.github.io/" target="_blank">Webpack</a> and
-      <a href="http://vuejs.github.io/vue-loader/" target="_blank">vue-loader</a>.
-      If you have any issues with the setup, please file an issue at this boilerplate's
-      <a href="https://github.com/vuejs-templates/webpack" target="_blank">repository</a>.
-    </p>
-    <p>
-      You may also want to checkout
-      <a href="https://github.com/vuejs/vue-router/" target="_blank">vue-router</a> for routing and
-      <a href="https://github.com/vuejs/vuex/" target="_blank">vuex</a> for state management.
-    </p>
+  <div class="page page-current">
+    <bar v-if="isIndex">
+      <bar-item path="/home" label="首页" icon="home"></bar-item>
+      <bar-item path="/tasks" label="任务" icon="tasks"></bar-item>
+      <bar-item path="/list" label="列表" icon="mytask"></bar-item>
+      <bar-item path="/user" label="我自己" icon="me"></bar-item>
+      <bar-item path="/more" label="更多" icon="more"></bar-item>
+    </bar>
+    <router-view transition="fade" transition-mode="out-in" keep-alive></router-view>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
+import Bar from './components/Bar'
+import BarItem from './components/BarItem'
 
 export default {
+  data () {
+    return {
+      isIndex: true
+    }
+  },
   components: {
-    Hello
+    Bar,
+    BarItem
   }
 }
 </script>
 
 <style>
-html {
-  height: 100%;
-}
+  html {
+    height: 100%;
+  }
 
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
 
-#app {
-  color: #2c3e50;
-  margin-top: -100px;
-  max-width: 600px;
-  font-family: Source Sans Pro, Helvetica, sans-serif;
-  text-align: center;
-}
+  #app {
+    color: #2c3e50;
+    margin-top: -100px;
+    max-width: 600px;
+    font-family: Source Sans Pro, Helvetica, sans-serif;
+    text-align: center;
+  }
 
-#app a {
-  color: #42b983;
-  text-decoration: none;
-}
+  #app a {
+    color: #42b983;
+    text-decoration: none;
+  }
 
-.logo {
-  width: 100px;
-  height: 100px
-}
+  .logo {
+    width: 100px;
+    height: 100px
+  }
 </style>
